@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee+Shade&family=Raleway:wght@300;400;500;600&display=swap');
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+nav {
+  background-color: rgb(252, 252, 253);
+  padding: 0.7rem 2.2rem 0.7rem 2.2rem;
+  margin: 0;
+  justify-content: space-between;
+  display: flex;
+  box-shadow:
+    0 1px 2px 0 rgb(0 0 0 / 3%),
+    0 1px 6px -1px rgb(0 0 0 / 2%),
+    0 2px 4px 0 rgb(0 0 0 / 2%);
+}
+
+.nav-logo {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 1.6rem;
+  color: #8878C3;
+}
+
+.nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  padding: 3px;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+
+}
+.wallet-nav {
+  border: 3px solid #6c58b3;
+  background: #8878C3;
+  color: #ffffff;
+  border-radius: 9px;
+}
+
+.main-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.App-header {
+  background-color: rgb(247, 248, 250);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
