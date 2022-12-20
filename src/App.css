@@ -85,6 +85,7 @@ nav {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  z-index: -9999999999999999;
 }
 footer {
   display: flex;
@@ -142,4 +143,25 @@ footer {
   font-family: 'Audiowide', cursive;
   padding: 2rem;
   color: #42d689;
+}
+.menu-icon {
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-link {
+    display: none;
+    position: absolute;
+    top: 3.7rem;
+    left: 0;
+    width: 100%;
+    background-color: var(--bgcolor);
+    text-align: center;
+  }
 }

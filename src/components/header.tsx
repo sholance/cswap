@@ -67,6 +67,9 @@ export default function Navbar() {
             }${address.slice(address.length - 4)}`
             : address;
     }
+    const navClick = (e: { currentTarget: { classList: { toggle: (arg0: string) => void; }; }; }) => {
+        e.currentTarget.classList.toggle('responsive');
+    };
 
     return (
         <>
@@ -112,6 +115,9 @@ export default function Navbar() {
                             )
                             }
                         </div>
+                        <a id="menu-icon" onClick={navClick} className="menu-icon">
+                            <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#3d2b7c" stroke-width="2" stroke-linecap="butt" stroke-linejoin="arcs"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                        </a>
                     </nav>
                     <Route path="/" exact component={landing} />
                     <Route path="/trade" exact component={Trade} />
