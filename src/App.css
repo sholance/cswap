@@ -85,7 +85,10 @@ nav {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  z-index: -9999999999999999;
+}
+
+.swap-wrapper {
+  z-index: -9999999999999999999999999999999;
 }
 footer {
   display: flex;
