@@ -5,7 +5,7 @@ export default function landing() {
         <>
             <main className="main-body">
                 <h3 className='landing-header'>
-                    Decentralized exchange and automated market maker protocol for <span className='celo-text'>Celo</span>  assets.
+                    Decentralized exchange and market maker protocol for <span className='celo-text'>Celo</span>  assets.
                 </h3>
             </main>
         </>

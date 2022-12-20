@@ -173,21 +173,21 @@ footer {
     background-color: var(--bgcolor);
     text-align: center;
   }
-                .list {
-                  flex-direction: column;
-                  height: auto;
-                }
-        
-                .nav-items:nth-child(1) {
-                  border-top: 1px solid rgba(255, 255, 255, 0.555);
-                  margin-top: 50px;
-                }
-        
-                .nav-items {
-                  width: 100%;
-                  border-top: 1px solid rgba(255, 255, 255, 0.555);
-                  text-align: center;
-                  margin-right: 0px;
-                  padding: 20px 0;
-                }
+.list {
+  flex-direction: column;
+  height: auto;
+}
+
+.nav-items:nth-child(1) {
+  border-top: 1px solid rgba(255, 255, 255, 0.555);
+  margin-top: 50px;
+}
+
+.nav-items {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, 0.555);
+  text-align: center;
+  margin-right: 0px;
+  padding: 20px 0;
+}
 }
