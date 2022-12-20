@@ -1,35 +1,48 @@
-import { connected } from 'process';
-import { ethers } from "ethers";
+import { useContractKit } from '@celo-tools/use-contractkit'
 import React, { useState, useEffect } from 'react'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link,
+} from "react-router-dom";
+import Trade from './trade';
+import SwapCoin from './swap';
+import landing from './landing';
 
-let userAddress = ('0xD38F6813a941f3ec7924B38494CeC8FeFfeacFe7')
-const apiUrl = "https://explorer.celo.org/mainnet/api?module=stats&action=coinprice"
 
-
+interface PriceValue {
+    [key: string]: number
+}
 export default function Navbar() {
 
-    const [price, setPrice] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [connected, setConnected] = useState(false);
 
-    // const provider = new ethers.providers.Web3Provider(
-    //     (window as any).ethereum
-    // );
-    // const userAddresses = async () => {
-    //     return provider.listAccounts()
-    // };
-    useEffect(() => {
-        fetch("https://explorer.celo.org/mainnet/api?module=stats&action=coinprice")
+    const [price, setPrice] = useState(0.500);
+    const [loading, setLoading] = useState(true);
+
+    const { connect, address } = useContractKit();
+    const fetchPrice = () => {
+        fetch("https://api.coingecko.com/api/v3/simple/price?ids=celo&vs_currencies=usd")
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
-                setPrice(data.coin_usd);
+                console.log(data.usd);
+                setPrice(data.celo.usd);
                 setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
             });
-    }, []);
+    }
+    useEffect(() => {
+
+        const interval = setInterval(() => {
+            fetchPrice()
+        }, 4000)
+
+
+        return () => clearInterval(interval)
+
+    }, [])
+
 
     type Params = {
         separator?: 'braces' | 'brackets' | 'parenthesis';
@@ -57,24 +70,56 @@ export default function Navbar() {
 
     return (
         <>
-            <nav>
-                <div className='nav-logo'>CSWAP</div>
-                <div className='nav-link'>
-                    <div className='nav-item'>Trade</div>
-                    <div className='nav-item'>Swap</div>
-                    {
-                        !loading && (
-                            <div className='nav-item'>${price}</div>
-                        )
-                    }
-                    {
-                        connected && (
-                            <div className='nav-item wallet-nav'>{shorten(userAddress)}</div>
-                        )
-                    }
-                    <div className='nav-item wallet-nav'>connect wallet</div>
+            <Router>
+                <div>
+                    <nav>
+                        <div className='nav-logo'>
+                            <Link to="/">CSWAP
+                            </Link>
+                        </div>
+                        <div className='nav-link'>
+                            <div className='nav-item'>
+                                <Link to="/trade">Trade</Link>
+                            </div>
+                            <div className='nav-item'>
+                                <Link to="/swap">Swap</Link>
+                            </div>
+                            <div className='nav-item price-container'>
+                                {loading ? (
+                                    <div className='nav-item price loading-price'>
+                                        <>
+                                            <span className='nav-price-text'>
+                                                celo today
+                                            </span>
+                                            $
+                                        </>
+                                    </div>) : (
+                                    <div className='price'>
+                                        <>
+                                            <span className='nav-price-text'>
+                                                celo today
+                                            </span>
+                                            ${price}
+                                        </>
+                                    </div>)
+                                }
+                            </div>
+
+                            {address ? (
+                                <div className='nav-item wallet-nav'>Connected to {shorten(address)} </div>
+                            ) : (
+                                <button className='nav-item wallet-nav' onClick={connect}>Connect wallet</button>
+                            )
+                            }
+                        </div>
+                    </nav>
+                    <Route path="/" exact component={landing} />
+                    <Route path="/trade" exact component={Trade} />
+                    <Route path="/swap" component={SwapCoin} />
                 </div>
-            </nav>
+            </Router>
         </>
     )
 }
+
+

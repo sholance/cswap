@@ -41,15 +41,44 @@ nav {
   padding-right: 1.2rem;
 
 }
+
+.nav-price-text {
+  font-size: 0.6rem;
+  padding: 2px;
+  color: #42d689;
+}
+
+.price {
+  display: inline-block;
+  font-weight: 500;
+  color: #3d2b7c;
+  margin: auto;
+}
+
+.loading-price:after {
+  position: absolute;
+  margin-left: .2rem;
+  content: ' ...';
+  animation: loading steps(4) 2s infinite;
+  clip: rect(auto, 0px, auto, auto);
+}
+
+@keyframes loading {
+  to {
+    clip: rect(auto, 20px, auto, auto);
+  }
+}
 .wallet-nav {
   border: 3px solid #6c58b3;
   background: #8878C3;
   color: #ffffff;
   border-radius: 9px;
+  cursor: pointer;
 }
 
 .main-body {
-  min-height: 100vh;
+  min-height: 85vh;
+    padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,19 +86,13 @@ nav {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-.App-header {
-  background-color: rgb(247, 248, 250);
-  min-height: 100vh;
+footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
+  align-items: center;
+    padding: 3px;
+    font-weight: 600;
+    font-size: 0.8rem;
 }
 
 @keyframes App-logo-spin {
@@ -79,4 +102,44 @@ nav {
   to {
     transform: rotate(360deg);
   }
+}
+.landing-header {
+  color: #6c58b3;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 7rem;
+  text-align: center;
+}
+
+.celo-text {
+  color: #42d689;
+}
+
+.chart-body {
+  display: flex;
+  width: 100%;
+  padding: 3rem;
+}
+
+.chart-header {
+  text-align: center;
+  color: #3d2b7c;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.chart {
+  background-color: aliceblue;
+  width: 50vw;
+  height: 100%;
+  display: flex;
+  padding: 2px;
+  border: 1px solid #3d2b7c2b;
+
+}
+
+.chart-desc {
+  font-family: 'Audiowide', cursive;
+  padding: 2rem;
+  color: #42d689;
 }

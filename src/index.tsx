@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ReactGA from 'react-ga'
+import { ContractKitProvider } from '@celo-tools/use-contractkit';
+import '@celo-tools/use-contractkit/lib/styles.css';
+
 
 
 ReactGA.initialize('test', { testMode: true, debug: true })
@@ -12,7 +15,17 @@ ReactGA.initialize('test', { redactEmail: false })
 
 ReactDOM.render(
   <React.StrictMode>
+    <ContractKitProvider
+      dapp={{
+        name: 'cswap',
+        description: 'swap celo with cswap',
+        url: 'https://cswap.top',
+        icon: '',
+      }}
+    >
     <App/>
+    </ContractKitProvider>
+
   </React.StrictMode>
   ,
   document.getElementById('root')
